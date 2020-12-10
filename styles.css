@@ -18,8 +18,24 @@ body {
 }
 
 .piano {
+    display: flex;
     margin-top: 30px;
     height: 300px;
-    width: 800px;
+    width: 400px;
     background-color: white;
+}
+
+.black-key{
+    background-color:black; 
+    width: 50px;
+    margin-bottom: 110px;
+}
+.white-key{
+    background-color: white;
+    width: 50px;
+    border:1px solid black;
+}
+
+.main {
+    display: flex;
 }

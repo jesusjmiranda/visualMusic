@@ -1,9 +1,14 @@
 let container = document.querySelector(".main");
 
 let selection_mode = 'normal';
-const CHROMATIC_NOTES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+let hover = () => {
+    key.classList.add("hover")
+}
 
+let stopHover = () => {
+    key.classList.remove("hover")
+}
 
 //PIANO GUI
 let drawPiano = (octaves=1) => {
@@ -11,9 +16,10 @@ let drawPiano = (octaves=1) => {
     let piano = document.createElement("div");
     piano.classList.add("piano");
 
-    for(let i = 0; i < CHROMATIC_NOTES.length * octaves; i++) {
+    for(let i = 0; i < 12 * octaves; i++) {
         let key = document.createElement("div");
-        key.addEventListener("mouseover", hover);
+        key.addEventListener("mouseenter", hover);
+        key.addEventListener("mouseleave", stopHover);
         if (i == 0 || i == 2 || i == 4 || i == 5 || i == 7 || i == 9 || i == 11) {
             key.classList.add("white-key"); 
         } else {
@@ -26,9 +32,8 @@ let drawPiano = (octaves=1) => {
 }
 
 
-let hover = () => {
-    
-}
+
+/*
 //SELECTION MODES
 
 
@@ -43,12 +48,8 @@ let Chord = class {
 let Music = class {
 
 }
-
-let a = new Chord("amin", ["a", "c", "e"])
-
-
-
-
+*/
 drawPiano()
 drawPiano()
 drawPiano()
+

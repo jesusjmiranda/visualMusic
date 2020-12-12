@@ -28,7 +28,6 @@ body {
 .black-key{
     background-color:black; 
     width: 50px;
-    margin-bottom: 110px;
 }
 .white-key{
     background-color: white;
@@ -38,4 +37,8 @@ body {
 
 .main {
     display: flex;
+}
+
+.hover {
+    background-color: pink;
 }

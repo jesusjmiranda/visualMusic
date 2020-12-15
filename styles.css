@@ -28,11 +28,13 @@ body {
 .black-key{
     background-color:black; 
     width: 50px;
+    color: black;
 }
 .white-key{
     background-color: white;
     width: 50px;
     border:1px solid black;
+    color: white;
 }
 
 .main {
@@ -41,8 +43,10 @@ body {
 
 .hover {
     background-color: violet;
+    color: violet;
 }
 
 .clicked {
-   background-color: gold; 
+    background-color: violet; 
+    color: violet;
 }

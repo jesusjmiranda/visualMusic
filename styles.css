@@ -40,5 +40,9 @@ body {
 }
 
 .hover {
-    background-color: pink;
+    background-color: violet;
+}
+
+.clicked {
+   background-color: gold; 
 }

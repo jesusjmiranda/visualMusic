@@ -54,6 +54,15 @@ body {
     color: violet;
 }
 
+.activeNotes{
+    margin-top: 20px;
+    background-color: purple;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
 .resetButton {
     margin-top: 20px;
     background-color: purple;
@@ -63,6 +72,8 @@ body {
     line-height: 50px;
 }
 
+
+/*
 .seperators {
     position: fixed;
     background-color: black;
@@ -120,3 +131,4 @@ body {
     margin-top: 227px;
     margin-left: -169px;
 }
+*/

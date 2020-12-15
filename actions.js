@@ -81,13 +81,12 @@ let drawPiano = (octaves=1) => {
     container.appendChild(piano);
 }
 
+//Chord storage 
+//container that will display my saved chords
+let numberOfChords = 0;
+
 //some resetColor() function to call when a key is pressed to activate selection
 //to reset the colors so that the other octaves recieve the change
-
-
-
-
-
 
 
 
@@ -111,16 +110,35 @@ drawPiano()
 //might need a label notes function that gets called within the drawPiano function
 //that 
 //
-let body = document.querySelector("body");
-let resetButton = document.createElement("div");
-resetButton.classList.add("resetButton");
-resetButton.textContent = "activeNotes()";
-resetButton.addEventListener("click", something);
-body.appendChild(resetButton);
 
-
-function something(){
-    console.log(activeNotes)
+let something = () => {
+    console.log(activeNotes);
 }
 
-//reset button functionality!
+let getChord = () => {
+    console.log(activeNotes.sort());
+}
+
+let body = document.querySelector("body");
+let activeNotesButton= document.createElement("div");
+activeNotesButton.classList.add("activeNotes");
+activeNotesButton.textContent = "activeNotes()";
+activeNotesButton.addEventListener("click", something);
+body.appendChild(activeNotesButton);
+
+
+
+let reset = () => {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    activeNotes = []
+
+    drawPiano()
+}
+
+let resetButton = document.createElement("div");
+resetButton.classList.add("resetButton");
+resetButton.textContent = "Reset keyboard"; 
+resetButton.addEventListener("click", reset);
+body.appendChild(resetButton);

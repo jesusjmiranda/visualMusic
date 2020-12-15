@@ -26,15 +26,18 @@ body {
 }
 
 .black-key{
-    background-color:black; 
+    background-color: black; 
     width: 50px;
     color: black;
+    margin-bottom: 100px;
+    border: 1px solid black;
+    z-index: 1;
 }
 .white-key{
     background-color: white;
     width: 50px;
-    border:1px solid black;
     color: white;
+    z-index: 0;
 }
 
 .main {
@@ -49,4 +52,71 @@ body {
 .clicked {
     background-color: violet; 
     color: violet;
+}
+
+.resetButton {
+    margin-top: 20px;
+    background-color: purple;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.seperators {
+    position: fixed;
+    background-color: black;
+    height: 100px;
+    width: 2px;
+    z-index: 3;
+    margin-top: 227px;
+    margin-left: 32px;
+}
+.seperators1 {
+    position: fixed;
+    background-color: black;
+    height: 100px;
+    width: 2px;
+    z-index: 3;
+    margin-top: 227px;
+    margin-left: 166px;
+}
+.seperators2 {
+    position: fixed;
+    background-color: black;
+    height: 100px;
+    width: 2px;
+    z-index: 3;
+    margin-top: 227px;
+    margin-left: 300px;
+}
+
+.seperators3 {
+    position: fixed;
+    background-color: black;
+    height: 301px;
+    width: 2px;
+    z-index: 3;
+    margin-top: 29px;
+    margin-left: -65px;
+}
+
+.seperators4 {
+    position: fixed;
+    background-color: black;
+    height: 100px;
+    width: 2px;
+    z-index: 3;
+    margin-top: 227px;
+    margin-left: -302px;
+}
+
+.seperators5 {
+    position: fixed;
+    background-color: black;
+    height: 100px;
+    width: 2px;
+    z-index: 3;
+    margin-top: 227px;
+    margin-left: -169px;
 }

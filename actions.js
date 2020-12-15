@@ -4,30 +4,14 @@ let selection_mode = 'normal';
 
 let activeNotes = []
 
-
 //PIANO GUI
 let drawPiano = (octaves=1) => {
-
     let piano = document.createElement("div");
     piano.classList.add("piano");
 
     for(let i = 0; i < 12 * octaves; i++) {
+
         let key = document.createElement("div");
-        key.addEventListener("mouseenter", function() {
-            key.classList.add("hover")
-        });
-        key.addEventListener("mouseleave", function() {
-            key.classList.remove("hover");
-        });
-        key.addEventListener("click", function() { 
-            let classes = key.className.split(" ");
-            if(!classes.includes("clicked")) {
-                key.classList.add("clicked")
-                activeNotes.push("something");
-            } else {
-                key.classList.remove("clicked");
-            }
-        });
 
         switch(i){
             case 0:
@@ -65,7 +49,6 @@ let drawPiano = (octaves=1) => {
                 break;
             case 11:
                 key.textContent = "b";
-                break;
         }
 
         if (i == 0 || i == 2 || i == 4 || i == 5 || i == 7 || i == 9 || i == 11) {
@@ -73,6 +56,24 @@ let drawPiano = (octaves=1) => {
         } else {
             key.classList.add("black-key");
         }
+
+        key.addEventListener("mouseenter", function() {
+            key.classList.add("hover")
+        });
+        key.addEventListener("mouseleave", function() {
+            key.classList.remove("hover");
+        });
+        key.addEventListener("click", function() { 
+            let classes = key.className.split(" ");
+            if(!classes.includes("clicked")) {
+                key.classList.add("clicked")
+                activeNotes.push(key.textContent);
+            } else {
+                key.classList.remove("clicked");
+                let toDelete = activeNotes.indexOf(`${key.textContent}`);
+                activeNotes = activeNotes.filter(e => e !== `${key.textContent}`);
+            }
+        });
 
         piano.appendChild(key)
     }
@@ -109,7 +110,17 @@ let Music = class {
 drawPiano()
 //might need a label notes function that gets called within the drawPiano function
 //that 
+//
+let body = document.querySelector("body");
+let resetButton = document.createElement("div");
+resetButton.classList.add("resetButton");
+resetButton.textContent = "activeNotes()";
+resetButton.addEventListener("click", something);
+body.appendChild(resetButton);
+
 
 function something(){
     console.log(activeNotes)
 }
+
+//reset button functionality!

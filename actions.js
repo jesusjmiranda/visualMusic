@@ -2,7 +2,15 @@ let container = document.querySelector(".main");
 
 let selection_mode = 'normal';
 
-let activeNotes = []
+class Chord {
+    constructor(notes){
+      this.notes = notes;
+    }
+}
+
+let activeNotes = [];
+
+let savedChords = [];
 
 let noteNums = {
     c:     0,
@@ -183,15 +191,13 @@ let drawPiano = (octaves=1) => {
 //some resetColor() function to call when a key is pressed to activate selection
 //to reset the colors so that the other octaves recieve the change
 
-
-
 /*
 //SELECTION MODES
 
 */
 drawPiano()
 
-let something = () => {
+let logActiveNotes= () => {
     console.log(activeNotes);
 }
 
@@ -200,13 +206,14 @@ let getChord = () => {
 }
 
 let body = document.querySelector("body");
+let buttons = document.createElement("div");
+buttons.classList.add("buttons-container");
+body.appendChild(buttons);
 let activeNotesButton= document.createElement("div");
 activeNotesButton.classList.add("activeNotes");
 activeNotesButton.textContent = "activeNotes()";
-activeNotesButton.addEventListener("click", something);
-body.appendChild(activeNotesButton);
-
-
+activeNotesButton.addEventListener("click", logActiveNotes);
+buttons.appendChild(activeNotesButton);
 
 let reset = () => {
     while (container.firstChild) {
@@ -217,9 +224,20 @@ let reset = () => {
     drawPiano()
 }
 
+let column = document.createElement("column");
+column.classList.add("column");
 
 let resetButton = document.createElement("div");
 resetButton.classList.add("resetButton");
 resetButton.textContent = "Reset keyboard"; 
 resetButton.addEventListener("click", reset);
-body.appendChild(resetButton);
+buttons.appendChild(resetButton);
+
+
+let saveChord = () => {
+  
+}
+
+let saveChordButton = document.createElement("div");
+saveChordButton.classList.add("saveChordButton");
+

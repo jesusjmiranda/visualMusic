@@ -80,10 +80,21 @@ let scale = (note, mode="major") => {
 }
 
 //translates between number and name of note
-let translate = (array, typeDesired) => {
+let numToNote = (arrayOfNoteNames) => {
     let result = [];
-    arrayOfNoteNums.forEach(element => {
 
+    arrayOfNoteNames.forEach(element => {
+        result.push(noteNames[element]) 
+    });
+
+    return result;
+}
+
+let noteToNum = (arrayOfNoteNums) => {
+    let result = [];
+
+    arrayOfNoteNums.forEach(element => {
+        result.push(noteNums[element])
     });
     return result;
 }

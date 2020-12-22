@@ -201,6 +201,9 @@ let drawPiano = (octaves=1, notesToDraw) => {
 //container that will display my saved chords
 //let numberOfChords = 0;
 
+//some resetColor() function to call when a key is pressed to activate selection
+//to reset the colors so that the other octaves recieve the change
+
 /*
 //SELECTION MODES
 
@@ -233,12 +236,11 @@ let resetPiano = () => {
 
 let drawScaleNotes = (mode) => {
 
+
     if (activeNotes.length == 1){
 
         let destroyModeMenu = () => {
-            while (modeSelection.firstChild) {
-                modeSelection.removeChild(modeSelection.firstChild)
-            } 
+    
         }
 
         let modeSelection = document.createElement("div");
@@ -258,12 +260,23 @@ let drawScaleNotes = (mode) => {
 
                 let modeScaleCreated = scale(selectedNote, selectedMode);
 
+                //so far: modeScaleCreated is my array... what now
                 drawPiano(1, modeScaleCreated);
-                destroyModeMenu();
+
+                console.log(modeScaleCreated);
+
             });
+
             modeSelection.appendChild(modeNode);            
         });
+
     }
+
+    //*if only one active note 
+    //*  get active note
+    //*  create menu for user to choose mode
+    //  destroy menu after choice is made
+    //*  create scale of chosen type
 }
   
 // BUTTONS

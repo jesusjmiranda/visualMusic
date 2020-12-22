@@ -220,13 +220,17 @@ let getChord = () => {
     console.log(activeNotes.sort());
 }
 
+let resetActiveNotes = () => {
+
+    activeNotes = []
+    
+}
+
 let resetPiano = () => {
 
     while (piano_container.firstChild) {
         piano_container.removeChild(piano_container.firstChild);
     }
-
-    activeNotes = []
 
     drawPiano()
 }
@@ -283,7 +287,11 @@ column.classList.add("column");
 let resetButton = document.createElement("div");
 resetButton.classList.add("resetButton");
 resetButton.textContent = "Reset keyboard"; 
-resetButton.addEventListener("click", resetPiano);
+resetButton.addEventListener("click", function() {
+
+    resetPiano();
+    resetActiveNotes();
+});
 buttons.appendChild(resetButton);
 
 let saveChordButton = document.createElement("div");
@@ -296,5 +304,4 @@ drawScale.classList.add("drawChordButton");
 drawScale.textContent = "Draw Scale";
 drawScale.addEventListener("click", drawScaleNotes);
 buttons.appendChild(drawScale);
-
 

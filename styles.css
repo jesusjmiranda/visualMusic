@@ -88,7 +88,21 @@ body {
 }
 
 .saveChordButton {
+    margin: 20px;
+    background-color: purple;
+    width: 100px;
+    height: 50px;
+    text-align:center;
+    line-height: 50px;
+}
 
+.drawChordButton {
+    margin: 20px;
+    background-color: purple;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
 }
 
 .navigation{
@@ -106,64 +120,3 @@ body {
     color: black;
     border: 1px solid white;
 }
-
-
-/*
-.seperators {
-    position: fixed;
-    background-color: black;
-    height: 100px;
-    width: 2px;
-    z-index: 3;
-    margin-top: 227px;
-    margin-left: 32px;
-}
-.seperators1 {
-    position: fixed;
-    background-color: black;
-    height: 100px;
-    width: 2px;
-    z-index: 3;
-    margin-top: 227px;
-    margin-left: 166px;
-}
-.seperators2 {
-    position: fixed;
-    background-color: black;
-    height: 100px;
-    width: 2px;
-    z-index: 3;
-    margin-top: 227px;
-    margin-left: 300px;
-}
-
-.seperators3 {
-    position: fixed;
-    background-color: black;
-    height: 301px;
-    width: 2px;
-    z-index: 3;
-    margin-top: 29px;
-    margin-left: -65px;
-}
-
-.seperators4 {
-    position: fixed;
-    background-color: black;
-    height: 100px;
-    width: 2px;
-    z-index: 3;
-    margin-top: 227px;
-    margin-left: -302px;
-}
-
-.seperators5 {
-    position: fixed;
-    background-color: black;
-    height: 100px;
-    width: 2px;
-    z-index: 3;
-    margin-top: 227px;
-    margin-left: -169px;
-}
-*/

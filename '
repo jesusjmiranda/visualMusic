@@ -88,7 +88,7 @@ let scale = (note, mode="major") => {
       }
   });
 
-  console.log(result)
+  console.log(something)
   return result; 
 }
 
@@ -112,7 +112,7 @@ let noteToNum = (arrayOfNoteNums) => {
 }
 
 //PIANO GUI
-let drawPiano = (octaves=1, notesToDraw) => {
+let drawPiano = (octaves=1, activeNotes=[]) => {
     let piano = document.createElement("div");
     piano.classList.add("piano");
 
@@ -183,15 +183,9 @@ let drawPiano = (octaves=1, notesToDraw) => {
                 activeNotes = activeNotes.filter(e => e !== `${key.textContent}`);
             }
         });
-
-        if (notesToDraw) {
-            notesToDraw.forEach(note => {
-                if (key.textContent == note) {
-                    key.classList.add("clicked");
-                    activeNotes.push(note);
-                }
-            });
-        }
+        
+        //function to check if note is in passed array of active notes (activate if so).  
+        //don't type below this...
 
         piano.appendChild(key)
     }
@@ -210,7 +204,6 @@ let drawPiano = (octaves=1, notesToDraw) => {
 //SELECTION MODES
 
 */
-
 drawPiano()
 
 let logActiveNotes= () => {
@@ -222,20 +215,20 @@ let getChord = () => {
 }
 
 let resetPiano = () => {
-
     while (piano_container.firstChild) {
         piano_container.removeChild(piano_container.firstChild);
     }
-
     activeNotes = []
 
     drawPiano()
 }
 
-let drawScaleNotes = (note, mode) => {
-
-}
+/*
+let saveChord = () => {
+    
   
+}
+*/
 // BUTTONS
 
 let body = document.querySelector("body");
@@ -263,8 +256,3 @@ saveChordButton.classList.add("saveChordButton");
 saveChordButton.textContent = "Save chord";
 buttons.appendChild(saveChordButton);
 
-let drawScale= document.createElement("div");
-drawScale.classList.add("drawChordButton");
-drawScale.textContent = "Draw Scale";
-drawScale.addEventListener("click", drawScaleNotes);
-buttons.appendChild(drawScale);

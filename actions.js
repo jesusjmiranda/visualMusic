@@ -88,7 +88,6 @@ let scale = (note, mode="major") => {
       }
   });
 
-  console.log(result)
   return result; 
 }
 
@@ -248,8 +247,9 @@ let drawScaleNotes = (mode) => {
             modeNode.classList.add("modeNode");
             modeNode.textContent = `${mode}`;
             modeNode.addEventListener("click", function() {
-
-                scale(activeNotes[0], modeNode.textContent);
+                let selectedNote = activeNotes[0];
+                let selectedMode = modeNode.textContent;
+                scale(selectedNote, selectedMode);
 
             });
             modeSelection.appendChild(modeNode);            

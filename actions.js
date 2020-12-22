@@ -1,4 +1,9 @@
 let container = document.querySelector(".main");
+let piano_container = document.createElement("div");
+piano_container.classList.add("piano-container");
+container.appendChild(piano_container);
+
+let nav = document.querySelector(".navigation");
 
 let selection_mode = 'normal';
 
@@ -97,7 +102,6 @@ let numToNote = (arrayOfNoteNames) => {
 
     return result;
 }
-
 let noteToNum = (arrayOfNoteNums) => {
     let result = [];
 
@@ -108,7 +112,7 @@ let noteToNum = (arrayOfNoteNums) => {
 }
 
 //PIANO GUI
-let drawPiano = (octaves=1) => {
+let drawPiano = (octaves=1, activeNotes=[]) => {
     let piano = document.createElement("div");
     piano.classList.add("piano");
 
@@ -163,9 +167,11 @@ let drawPiano = (octaves=1) => {
         key.addEventListener("mouseenter", function() {
             key.classList.add("hover")
         });
+
         key.addEventListener("mouseleave", function() {
             key.classList.remove("hover");
         });
+
         key.addEventListener("click", function() { 
             let classes = key.className.split(" ");
             if(!classes.includes("clicked")) {
@@ -177,11 +183,17 @@ let drawPiano = (octaves=1) => {
                 activeNotes = activeNotes.filter(e => e !== `${key.textContent}`);
             }
         });
+        
+        //function to check if note is in passed array of active notes (activate if so).
+        
+      
+
+        //don't type below this...
 
         piano.appendChild(key)
     }
 
-    container.appendChild(piano);
+    piano_container.appendChild(piano);
 }
 
 //Chord storage 
@@ -208,7 +220,7 @@ let getChord = () => {
 let body = document.querySelector("body");
 let buttons = document.createElement("div");
 buttons.classList.add("buttons-container");
-body.appendChild(buttons);
+container.appendChild(buttons);
 let activeNotesButton= document.createElement("div");
 activeNotesButton.classList.add("activeNotes");
 activeNotesButton.textContent = "activeNotes()";
@@ -216,8 +228,8 @@ activeNotesButton.addEventListener("click", logActiveNotes);
 buttons.appendChild(activeNotesButton);
 
 let reset = () => {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
+    while (piano_container.firstChild) {
+        piano_container.removeChild(piano_container.firstChild);
     }
     activeNotes = []
 
@@ -233,11 +245,11 @@ resetButton.textContent = "Reset keyboard";
 resetButton.addEventListener("click", reset);
 buttons.appendChild(resetButton);
 
-
+/*
 let saveChord = () => {
   
 }
 
 let saveChordButton = document.createElement("div");
 saveChordButton.classList.add("saveChordButton");
-
+*/

@@ -6,8 +6,6 @@
 
 body {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
     background-color: #2b2b2b;
     color: white;
@@ -42,7 +40,18 @@ body {
 
 .main {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.piano-container {
+    display: flex;
     background-color: red;
+    background-color: pink;
+    height: 300px;
+    align-self: center;
 }
 
 .hover {
@@ -75,16 +84,30 @@ body {
 
 .buttons-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .saveChordButton {
 
 }
 
-.column {
-
+.navigation{
+    display: flex;
+    width: 15%;
+    height: 90%;
+    border: 1px solid white;
+    margin-left: 40px;
 }
+
+.title {
+    width: 90%;
+    margin: 5px;
+    height: 5%;
+    color: black;
+    border: 1px solid white;
+}
+
+
 /*
 .seperators {
     position: fixed;

@@ -232,8 +232,36 @@ let resetPiano = () => {
     drawPiano()
 }
 
-let drawScaleNotes = (note, mode) => {
+let drawScaleNotes = (mode) => {
 
+    if (activeNotes.length == 1){
+
+        let modeSelection = document.createElement("div");
+        modeSelection.classList.add("modeSelectionContainer");
+        container.appendChild(modeSelection);
+
+        let modes = Object.keys(modeIntervals);
+
+
+        modes.forEach(mode => {
+            let modeNode = document.createElement("div");
+            modeNode.classList.add("modeNode");
+            modeNode.textContent = `${mode}`;
+            modeNode.addEventListener("click", function() {
+
+                scale(activeNotes[0], modeNode.textContent);
+
+            });
+            modeSelection.appendChild(modeNode);            
+        });
+
+    }
+
+    //*if only one active note 
+    //*  get active note
+    //*  create menu for user to choose mode
+    //  destroy menu after choice is made
+    //*  create scale of chosen type
 }
   
 // BUTTONS
@@ -268,3 +296,5 @@ drawScale.classList.add("drawChordButton");
 drawScale.textContent = "Draw Scale";
 drawScale.addEventListener("click", drawScaleNotes);
 buttons.appendChild(drawScale);
+
+

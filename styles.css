@@ -42,8 +42,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
-    width: 100%;
+    align-items: center;
+    height: 95%;
+    width: 80%;
+    margin: 20px;
+    border: 1px solid white;
 }
 
 .piano-container {
@@ -105,12 +108,27 @@ body {
     line-height: 50px;
 }
 
+.modeSelectionContainer {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+}
+
+.modeNode {
+    width: 29px;
+    height: 160px; 
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid white;
+    word-break: break-all;
+}
 .navigation{
     display: flex;
     width: 15%;
-    height: 90%;
+    height: 95%;
     border: 1px solid white;
-    margin-left: 40px;
+    margin: 20px;
 }
 
 .title {

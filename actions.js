@@ -7,15 +7,7 @@ let nav = document.querySelector(".navigation");
 
 let selection_mode = 'normal';
 
-class Chord {
-    constructor(notes){
-      this.notes = notes;
-    }
-}
-
 let activeNotes = [];
-
-let savedChords = [];
 
 let noteNums = {
     c:     0,
@@ -94,18 +86,20 @@ let scale = (note, mode="major") => {
 let numToNote = (arrayOfNoteNames) => {
     let result = [];
 
-    arrayOfNoteNames.forEach(element => {
-        result.push(noteNames[element]) 
-    });
+    for (let each in arrayOfNoteNames) {
+        result.push(noteNames[each]);
+    }
 
     return result;
 }
+
 let noteToNum = (arrayOfNoteNums) => {
     let result = [];
 
-    arrayOfNoteNums.forEach(element => {
-        result.push(noteNums[element])
-    });
+    for (let each in arrayOfNoteNums) {
+        result.push(noteNums[each]);
+    } 
+
     return result;
 }
 
@@ -113,6 +107,11 @@ let noteToNum = (arrayOfNoteNums) => {
 let drawPiano = (octaves=1, notesToDraw) => {
     let piano = document.createElement("div");
     piano.classList.add("piano");
+
+    if (octaves && notesToDraw) {
+        console.log("there were parameters");
+        console.log(`octaves: ${octaves}\nnotesToDraw: ${notesToDraw}`);
+    }
 
     for(let i = 0; i < 12 * octaves; i++) {
 
@@ -182,13 +181,26 @@ let drawPiano = (octaves=1, notesToDraw) => {
             }
         });
 
+
         if (notesToDraw) {
-            notesToDraw.forEach(note => {
-                if (key.textContent == note) {
+            let notesVariable = notesToDraw;
+            
+            Array.prototype.forEach.call(notesVariable, note => {
+                if (noteToNum(key.textContent) == note){
+                    console.log(note);
                     key.classList.add("clicked");
                     activeNotes.push(note);
                 }
             });
+/*
+            notesToDraw.forEach(note => {
+                if (noteToNum(key) == note) {
+                    console.log("match!");
+                    key.classList.add("clicked");
+                    activeNotes.push(note);
+                }
+            });
+*/
         }
 
         piano.appendChild(key)
@@ -206,7 +218,6 @@ let drawPiano = (octaves=1, notesToDraw) => {
 
 */
 
-drawPiano()
 
 let logActiveNotes= () => {
     console.log(activeNotes);
@@ -228,7 +239,6 @@ let resetPiano = () => {
         piano_container.removeChild(piano_container.firstChild);
     }
 
-    drawPiano()
 }
 
 let drawScaleNotes = (mode) => {
@@ -258,6 +268,9 @@ let drawScaleNotes = (mode) => {
 
                 let modeScaleCreated = scale(selectedNote, selectedMode);
 
+
+                resetActiveNotes();
+                resetPiano();
                 drawPiano(1, modeScaleCreated);
                 destroyModeMenu();
             });
@@ -289,6 +302,7 @@ resetButton.addEventListener("click", function() {
 
     resetPiano();
     resetActiveNotes();
+    drawPiano();
 });
 buttons.appendChild(resetButton);
 
@@ -303,3 +317,5 @@ drawScale.textContent = "Draw Scale";
 drawScale.addEventListener("click", drawScaleNotes);
 buttons.appendChild(drawScale);
 
+
+drawPiano();

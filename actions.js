@@ -183,30 +183,22 @@ let drawPiano = (octaves=1, notesToDraw) => {
 
 
         if (notesToDraw) {
-            let notesVariable = notesToDraw;
-            
-            Array.prototype.forEach.call(notesVariable, note => {
-                if (noteToNum(key.textContent) == note){
+            for (let each in notesToDraw) {
+                console.log(each);
+                if (noteToNum(key.textContent) == each){
                     console.log(note);
                     key.classList.add("clicked");
-                    activeNotes.push(note);
+                    activeNotes.push(each);
                 }
-            });
-/*
-            notesToDraw.forEach(note => {
-                if (noteToNum(key) == note) {
-                    console.log("match!");
-                    key.classList.add("clicked");
-                    activeNotes.push(note);
-                }
-            });
-*/
+            }
         }
 
         piano.appendChild(key)
     }
 
     piano_container.appendChild(piano);
+
+    notesToDraw = [];
 }
 
 //Chord storage 

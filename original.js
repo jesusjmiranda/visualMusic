@@ -38,6 +38,7 @@ let noteNames = {
     10: "a/b",
     11:   "b"
 }
+
 let possibleNotes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 //the w stands for whole (as in whole-step)

@@ -16,6 +16,7 @@ class Music {
         10:"a/b",
         11:  "b",
     }
+    //something here
 
     static noteNames: object ={
         "c": 0,
@@ -186,9 +187,14 @@ let drawPiano = (notesToDraw?: number[]) => {
             let classes = key.className;
             if (classes.search(/active/) == -1) {
                 key.classList.add("active");
+                Music.activeNotes.push(key.textContent);
             } else {
                 key.classList.remove("active");
+                Music.activeNotes = Music.activeNotes.filter(e => e !== key.textContent);
+
             }
+
+            console.log(Music.activeNotes);
 
             classes = null;
         });
@@ -200,3 +206,4 @@ let drawPiano = (notesToDraw?: number[]) => {
 };
 
 drawPiano();
+console.log("Hello everyone!");

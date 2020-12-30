@@ -55,6 +55,7 @@ var Music = /** @class */ (function () {
         10: "a/b",
         11: "b"
     };
+    //something here
     Music.noteNames = {
         "c": 0,
         "c/d": 1,
@@ -166,10 +167,13 @@ var drawPiano = function (notesToDraw) {
             var classes = key.className;
             if (classes.search(/active/) == -1) {
                 key.classList.add("active");
+                Music.activeNotes.push(key.textContent);
             }
             else {
                 key.classList.remove("active");
+                Music.activeNotes = Music.activeNotes.filter(function (e) { return e !== key.textContent; });
             }
+            console.log(Music.activeNotes);
             classes = null;
         });
     };
@@ -178,3 +182,4 @@ var drawPiano = function (notesToDraw) {
     }
 };
 drawPiano();
+console.log("Hello everyone!");

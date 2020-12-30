@@ -105,7 +105,7 @@ var drawPiano = function () {
     blackKeys.classList.add('blackKeys');
     piano.appendChild(blackKeys);
     piano.appendChild(whiteKeys);
-    for (var i = 0; i <= 12; i++) {
+    var _loop_1 = function (i) {
         var key = document.createElement("div");
         switch (i) {
             case 0:
@@ -156,6 +156,29 @@ var drawPiano = function () {
             key.classList.add('blackKey');
             blackKeys.appendChild(key);
         }
+        key.addEventListener("mouseenter", function () {
+            key.classList.add("hover");
+        });
+        key.addEventListener("mouseleave", function () {
+            key.classList.remove("hover");
+        });
+        key.addEventListener("click", function () {
+            var classes = key.className.split(" ");
+            console.log(classes);
+            /*
+            if(!classes.includes("clicked")) {
+                key.classList.add("clicked")
+                Music.activeNotes.push(key.textContent);
+            } else {
+                key.classList.remove("clicked");
+                let toDelete = activeNotes.indexOf(`${key.textContent}`);
+                Music.activeNotes = Music.activeNotes.filter(e => e !== `${key.textContent}`);
+            }
+            */
+        });
+    };
+    for (var i = 0; i <= 12; i++) {
+        _loop_1(i);
     }
 };
 drawPiano();

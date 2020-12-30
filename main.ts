@@ -174,6 +174,31 @@ let drawPiano = () => {
             blackKeys.appendChild(key);
         }
 
+        key.addEventListener("mouseenter", function() {
+            key.classList.add("hover")
+        });
+
+        key.addEventListener("mouseleave", function() {
+            key.classList.remove("hover");
+        });
+
+        key.addEventListener("click", function() { 
+            let classes = key.className.split(" ");
+            console.log(classes);
+            /*
+            if(!classes.includes("clicked")) {
+                key.classList.add("clicked")
+                Music.activeNotes.push(key.textContent);
+            } else {
+                key.classList.remove("clicked");
+                let toDelete = activeNotes.indexOf(`${key.textContent}`);
+                Music.activeNotes = Music.activeNotes.filter(e => e !== `${key.textContent}`);
+            }
+            */
+        });
+
+       
+
     }
 
 };

@@ -95,7 +95,7 @@ var Chord = /** @class */ (function () {
 }());
 ;
 var mainContent = document.querySelector('.main');
-var drawPiano = function () {
+var drawPiano = function (notesToDraw) {
     var piano = document.createElement('div');
     piano.classList.add('piano');
     mainContent.appendChild(piano);
@@ -163,16 +163,30 @@ var drawPiano = function () {
             key.classList.remove("hover");
         });
         key.addEventListener("click", function () {
-            var classes = key.className.split(" ");
+            var classes = key.className;
+            console.log("CLASSES BEFORE CLICK");
+            console.log(typeof classes);
             console.log(classes);
+            if (classes.search(/active/) == -1) {
+                key.classList.add("active");
+            }
+            console.log("CLASSES AFTER CLICK");
+            console.log(key.className);
+            /*
+            for (let each in classes) {
+                let temp = [];
+                temp.push(each);
+            }
+
             /*
             if(!classes.includes("clicked")) {
                 key.classList.add("clicked")
                 Music.activeNotes.push(key.textContent);
             } else {
                 key.classList.remove("clicked");
-                let toDelete = activeNotes.indexOf(`${key.textContent}`);
+                let toDelete = Music.activeNotes.indexOf(`${key.textContent}`);
                 Music.activeNotes = Music.activeNotes.filter(e => e !== `${key.textContent}`);
+
             }
             */
         });

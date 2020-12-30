@@ -103,3 +103,7 @@ body {
 .hover {
     background-color: purple;
 }
+
+.active {
+    background-color: hotpink;
+}

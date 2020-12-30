@@ -119,7 +119,7 @@ let drawPiano = (notesToDraw?: number[]) => {
     piano.appendChild(blackKeys);
     piano.appendChild(whiteKeys);
 
-    for (let i = 0; i <= 12; i++) {
+    for (let i = 0; i <= 11; i++) {
 
         let key = document.createElement("div");
 
@@ -128,13 +128,13 @@ let drawPiano = (notesToDraw?: number[]) => {
                 key.textContent = "c";
                 break;
             case 1:
-                key.textContent = "c/d";
+                key.textContent = "c|d";
                 break;
             case 2:
                 key.textContent = "d";
                 break;
             case 3:
-                key.textContent = "d/e";
+                key.textContent = "d|e";
                 break;
             case 4:
                 key.textContent = "e";
@@ -143,19 +143,19 @@ let drawPiano = (notesToDraw?: number[]) => {
                 key.textContent = "f";
                 break;
             case 6:
-                key.textContent = "f/g";
+                key.textContent = "f|g";
                 break;
             case 7:
                 key.textContent = "g";
                 break;
             case 8:
-                key.textContent = "g/a";
+                key.textContent = "g|a";
                 break;
             case 9:
                 key.textContent = "a";
                 break;
             case 10:
-                key.textContent = "a/b";
+                key.textContent = "a|b";
                 break;
             case 11:
                 key.textContent = "b";
@@ -184,32 +184,13 @@ let drawPiano = (notesToDraw?: number[]) => {
 
         key.addEventListener("click", function() { 
             let classes = key.className;
-            console.log("CLASSES BEFORE CLICK");
-            console.log(typeof classes);
-            console.log(classes);
             if (classes.search(/active/) == -1) {
                 key.classList.add("active");
-            }
-            console.log("CLASSES AFTER CLICK");
-            console.log(key.className)
-
-            /*
-            for (let each in classes) {
-                let temp = [];
-                temp.push(each);
-            }
-
-            /*
-            if(!classes.includes("clicked")) {
-                key.classList.add("clicked")
-                Music.activeNotes.push(key.textContent);
             } else {
-                key.classList.remove("clicked");
-                let toDelete = Music.activeNotes.indexOf(`${key.textContent}`);
-                Music.activeNotes = Music.activeNotes.filter(e => e !== `${key.textContent}`);
-
+                key.classList.remove("active");
             }
-            */
+
+            classes = null;
         });
 
        

@@ -95,11 +95,10 @@ var Chord = /** @class */ (function () {
     return Chord;
 }());
 ;
-var mainContent = document.querySelector('.main');
-var drawPiano = function (notesToDraw) {
+function drawPiano(params) {
+    var pianoLocation = document.querySelector("." + params.querySelector);
     var piano = document.createElement('div');
     piano.classList.add('piano');
-    mainContent.appendChild(piano);
     var whiteKeys = document.createElement('div');
     var blackKeys = document.createElement('div');
     whiteKeys.classList.add('whiteKeys');
@@ -180,6 +179,7 @@ var drawPiano = function (notesToDraw) {
     for (var i = 0; i <= 11; i++) {
         _loop_1(i);
     }
-};
-drawPiano();
-console.log("Hello everyone!");
+    pianoLocation.appendChild(piano);
+}
+;
+drawPiano({ querySelector: 'main' });

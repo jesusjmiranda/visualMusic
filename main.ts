@@ -103,14 +103,20 @@ class Chord {
 };
 
 
-let mainContent = document.querySelector('.main');
+interface DrawPianoParams {
+    notesToDraw?: Chord;
+    querySelector?: string;
+}
 
-let drawPiano = (notesToDraw?: number[]) => {
+
+
+function drawPiano(params: DrawPianoParams) {
+
+    let pianoLocation = document.querySelector(`.${params.querySelector}`);
 
     let piano = document.createElement('div');
     piano.classList.add('piano');
 
-    mainContent.appendChild(piano);
 
     let whiteKeys = document.createElement('div');
     let blackKeys = document.createElement('div');
@@ -203,7 +209,8 @@ let drawPiano = (notesToDraw?: number[]) => {
 
     }
 
+    pianoLocation.appendChild(piano);
+
 };
 
-drawPiano();
-console.log("Hello everyone!");
+drawPiano({querySelector: 'main'});

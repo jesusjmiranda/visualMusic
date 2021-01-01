@@ -106,11 +106,12 @@ class Chord {
 interface DrawPianoParams {
     notesToDraw?: Chord;
     querySelector?: string;
+    intervals?: number;
 }
 
 
 
-function drawPiano(params: DrawPianoParams) {
+function drawPiano(params: DrawPianoParams): void  {
 
     let pianoLocation = document.querySelector(`.${params.querySelector}`);
 
@@ -192,7 +193,7 @@ function drawPiano(params: DrawPianoParams) {
         key.addEventListener("click", function() { 
             let classes = key.className;
             if (classes.search(/active/) == -1) {
-                key.classList.add("active");
+                key.classList.add('active');
                 Music.activeNotes.push(key.textContent);
             } else {
                 key.classList.remove("active");
@@ -205,6 +206,28 @@ function drawPiano(params: DrawPianoParams) {
             classes = null;
         });
 
+
+        /*
+
+        if (params.notesToDraw){
+
+            let chord = params.notesToDraw.notes;
+
+            for(let note in chord) {
+              
+                console.log(key.textContent);
+
+                if (key.textContent == note) {
+                    key.classList.add('active');
+                    console.log(key.textContent); 
+                }
+
+            }
+
+            chord = null;
+        }
+        */
+
        
 
     }
@@ -213,4 +236,7 @@ function drawPiano(params: DrawPianoParams) {
 
 };
 
-drawPiano({querySelector: 'main'});
+let a = new Chord([0, 1, 2, 3, 4]);
+drawPiano({ notesToDraw: a,querySelector: 'main'});
+
+

@@ -165,7 +165,7 @@ function drawPiano(params) {
         key.addEventListener("click", function () {
             var classes = key.className;
             if (classes.search(/active/) == -1) {
-                key.classList.add("active");
+                key.classList.add('active');
                 Music.activeNotes.push(key.textContent);
             }
             else {
@@ -182,4 +182,5 @@ function drawPiano(params) {
     pianoLocation.appendChild(piano);
 }
 ;
-drawPiano({ querySelector: 'main' });
+var a = new Chord([0, 1, 2, 3, 4]);
+drawPiano({ notesToDraw: a, querySelector: 'main' });

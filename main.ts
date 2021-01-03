@@ -1,35 +1,33 @@
-//Music class mainly for static music theory methods for use with Chords
 class Music {
     static activeNotes = [];
 
     static noteNums: object = {
         0:   "c",
-        1: "c/d",
+        1: "c|d",
         2:   "d",
-        3: "d/e",
+        3: "d|e",
         4:   "e",
         5:   "f",
-        6: "f/g",
+        6: "f|g",
         7:   "g",
-        8: "g/a",
+        8: "g|a",
         9:   "a",
-        10:"a/b",
+        10:"a|b",
         11:  "b",
     }
-    //something here
 
     static noteNames: object ={
         "c": 0,
-        "c/d": 1,
+        "c|d": 1,
         "d":   2,
-        "d/e": 3,
+        "d|e": 3,
         "e":   4,
         "f":   5,
-        "f/g": 6,
+        "f|g": 6,
         "g":   7,
-        "g/a": 8,
+        "g|a": 8,
         "a":   9,
-        "a/b":10,
+        "a|b":10,
         "b":  11,
     }
 
@@ -85,9 +83,6 @@ class Music {
 
 } 
 
-//instances of this class will be used to store 
-//notes for chords the user creates. 
-
 class Chord {
     notes: number[];
 
@@ -102,14 +97,11 @@ class Chord {
 
 };
 
-
 interface DrawPianoParams {
     notesToDraw?: Chord;
     querySelector?: string;
     intervals?: number;
 }
-
-
 
 function drawPiano(params: DrawPianoParams): void  {
 
@@ -206,34 +198,23 @@ function drawPiano(params: DrawPianoParams): void  {
             classes = null;
         });
 
-
-        /*
-
         if (params.notesToDraw){
 
             let chord = params.notesToDraw.notes;
 
             for(let note in chord) {
               
-                console.log(key.textContent);
 
-                if (key.textContent == note) {
+                if (Music.noteNames[key.textContent] == note) {
                     key.classList.add('active');
-                    console.log(key.textContent); 
+                    Music.activeNotes.push(key.textContent);
                 }
-
             }
 
             chord = null;
         }
-        */
-
-       
-
     }
-
     pianoLocation.appendChild(piano);
-
 };
 
 let a = new Chord([0, 1, 2, 3, 4]);

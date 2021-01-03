@@ -1,4 +1,3 @@
-//Music class mainly for static music theory methods for use with Chords
 var Music = /** @class */ (function () {
     function Music() {
     }
@@ -43,31 +42,30 @@ var Music = /** @class */ (function () {
     Music.activeNotes = [];
     Music.noteNums = {
         0: "c",
-        1: "c/d",
+        1: "c|d",
         2: "d",
-        3: "d/e",
+        3: "d|e",
         4: "e",
         5: "f",
-        6: "f/g",
+        6: "f|g",
         7: "g",
-        8: "g/a",
+        8: "g|a",
         9: "a",
-        10: "a/b",
+        10: "a|b",
         11: "b"
     };
-    //something here
     Music.noteNames = {
         "c": 0,
-        "c/d": 1,
+        "c|d": 1,
         "d": 2,
-        "d/e": 3,
+        "d|e": 3,
         "e": 4,
         "f": 5,
-        "f/g": 6,
+        "f|g": 6,
         "g": 7,
-        "g/a": 8,
+        "g|a": 8,
         "a": 9,
-        "a/b": 10,
+        "a|b": 10,
         "b": 11
     };
     Music.modeIntervals = {
@@ -81,8 +79,6 @@ var Music = /** @class */ (function () {
     };
     return Music;
 }());
-//instances of this class will be used to store 
-//notes for chords the user creates. 
 var Chord = /** @class */ (function () {
     function Chord(arrayOfNoteNums) {
         var _this = this;
@@ -175,6 +171,16 @@ function drawPiano(params) {
             console.log(Music.activeNotes);
             classes = null;
         });
+        if (params.notesToDraw) {
+            var chord = params.notesToDraw.notes;
+            for (var note in chord) {
+                if (Music.noteNames[key.textContent] == note) {
+                    key.classList.add('active');
+                    Music.activeNotes.push(key.textContent);
+                }
+            }
+            chord = null;
+        }
     };
     for (var i = 0; i <= 11; i++) {
         _loop_1(i);

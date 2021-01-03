@@ -103,7 +103,7 @@ interface DrawPianoParams {
     intervals?: number;
 }
 
-function drawPiano(params: DrawPianoParams): void  {
+let drawPiano = (params: DrawPianoParams): void => {
 
     let pianoLocation = document.querySelector(`.${params.querySelector}`);
 
@@ -214,10 +214,21 @@ function drawPiano(params: DrawPianoParams): void  {
             chord = null;
         }
     }
+
     pianoLocation.appendChild(piano);
+
 };
 
 let a = new Chord([0, 1, 2, 3, 4]);
-drawPiano({ notesToDraw: a,querySelector: 'main'});
+drawPiano({ notesToDraw: a, querySelector: 'main'});
 
+let clearPiano = () => {
+    let piano = document.querySelector('.piano');
+    while (piano.firstChild) {
+        piano.removeChild(piano.firstChild);
+    }
 
+    piano.remove();
+    Music.activeNotes = [];
+
+}

@@ -91,7 +91,7 @@ var Chord = /** @class */ (function () {
     return Chord;
 }());
 ;
-function drawPiano(params) {
+var drawPiano = function (params) {
     var pianoLocation = document.querySelector("." + params.querySelector);
     var piano = document.createElement('div');
     piano.classList.add('piano');
@@ -186,7 +186,14 @@ function drawPiano(params) {
         _loop_1(i);
     }
     pianoLocation.appendChild(piano);
-}
-;
+};
 var a = new Chord([0, 1, 2, 3, 4]);
 drawPiano({ notesToDraw: a, querySelector: 'main' });
+var clearPiano = function () {
+    var piano = document.querySelector('.piano');
+    while (piano.firstChild) {
+        piano.removeChild(piano.firstChild);
+    }
+    piano.remove();
+    Music.activeNotes = [];
+};

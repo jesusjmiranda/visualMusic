@@ -172,14 +172,14 @@ var drawPiano = function (params) {
             classes = null;
         });
         if (params.notesToDraw) {
-            var chord = params.notesToDraw.notes;
-            for (var note in chord) {
-                if (Music.noteNames[key.textContent] == note) {
+            var notesPassed = params.notesToDraw.notes;
+            for (var note in notesPassed) {
+                if (Music.noteNames[key.textContent] == notesPassed[note]) {
                     key.classList.add('active');
                     Music.activeNotes.push(key.textContent);
                 }
             }
-            chord = null;
+            notesPassed = null;
         }
     };
     for (var i = 0; i <= 11; i++) {
@@ -187,8 +187,6 @@ var drawPiano = function (params) {
     }
     pianoLocation.appendChild(piano);
 };
-var a = new Chord([0, 1, 2, 3, 4]);
-drawPiano({ notesToDraw: a, querySelector: 'main' });
 var clearPiano = function () {
     var piano = document.querySelector('.piano');
     while (piano.firstChild) {
@@ -197,3 +195,5 @@ var clearPiano = function () {
     piano.remove();
     Music.activeNotes = [];
 };
+var aFlat = new Chord([3, 7, 2, 10]);
+drawPiano({ notesToDraw: aFlat, querySelector: "main" });

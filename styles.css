@@ -9,106 +9,134 @@ body, html {
     box-sizing: border-box;
 }
 
-body {
-    background-color: #2d2d2d;
-    display: flex;
-    height: 100vh;
-}
+@media only screen and (max-width: 750px) {
 
-.navigation {
-    display: flex;
-    border: 1px solid white;
-    width: 16%;
-    height: 95%;
-    margin: 20px;
-}
+    body {
+        background-color: #2d2d2d;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
 
-.main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center; 
-    align-items: center;
-    border: 1px solid white;
-    width: 80%;
-    height: 95%;
-    margin: 20px;
-}
+    .navigation {
+        display: flex;
+        border: 1px solid white;
+        width: 90%;
+        height: 150px;
+        margin: 20px;
+    }
 
-.piano {
-    display: flex;
-    flex-direction: column;
-    display: flex;
-    width: 500px;
-    height: 300px;
-    background-color: #3e3e3e;
-}
-
-.whiteKeys {
-    display: flex;
-    width: 100%; 
-    height: 50%;
-    padding-left: 45px;
-    text-align: center;
-    line-height: 150px;
-    user-select: none;
-}
-
-.blackKeys {
-    padding-left: 45px;
-    display: flex;
-    width: 100%;
-    height: 50%;
-    align-items: flex-end;
-    text-align: center;
-    line-height: 150px;
-    user-select: none;
-}
-
-.whiteKey  {
-    height: 75%;
-    background-color: white;
-    width: 30px;
-    right: 30px;
-    margin-right: 30px;
-    border: 1px solid black;
-    border-radius: 150px;
-}
-
-.whiteKey:nth-of-type(8) {
-    margin-right: 0px;
+    .piano {
+        display: none;
+    }
 }
 
 
-.blackKey {
-    background-color: black;
-    height: 75%;
-    margin-right: 10px;
-    width: 30px;
-    color: white;
-    border-radius: 150px;
+@media only screen and (min-width: 750px) {
+
+    body {
+        background-color: #2d2d2d;
+        display: flex;
+        height: 100vh;
+    }
+
+    .navigation {
+        display: flex;
+        border: 1px solid white;
+        width: 16%;
+        min-width: 200px;
+        height: 95%;
+        margin: 20px;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; 
+        align-items: center;
+        border: 1px solid white;
+        width: 80%;
+        height: 95%;
+        margin: 20px;
+    }
+
+    .piano {
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        width: 500px;
+        height: 300px;
+        background-color: #3e3e3e;
+    }
+
+    .whiteKeys {
+        display: flex;
+        width: 100%; 
+        height: 50%;
+        padding-left: 45px;
+        text-align: center;
+        line-height: 150px;
+        user-select: none;
+    }
+
+    .blackKeys {
+        padding-left: 45px;
+        display: flex;
+        width: 100%;
+        height: 50%;
+        align-items: flex-end;
+        text-align: center;
+        line-height: 150px;
+        user-select: none;
+    }
+
+    .whiteKey  {
+        height: 75%;
+        background-color: white;
+        width: 30px;
+        right: 30px;
+        margin-right: 30px;
+        border: 1px solid black;
+        border-radius: 150px;
+    }
+
+    .whiteKey:nth-of-type(8) {
+        margin-right: 0px;
+    }
+
+
+    .blackKey {
+        background-color: black;
+        height: 75%;
+        margin-right: 10px;
+        width: 30px;
+        color: white;
+        border-radius: 150px;
+    }
+
+    .blackKey:nth-of-type(1) {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .blackKey:nth-of-type(2) {
+        margin-right: 90px;
+    }
+
+    .blackKey:nth-of-type(3) {
+        margin-right: 30px;
+    }
+
+    .blackKey:nth-of-type(4) {
+        margin-right: 30px;
+    }
+
+    .hover {
+        background-color: purple;
+    }
+
+    .active {
+        background-color: hotpink;
+    }
 }
 
-.blackKey:nth-of-type(1) {
-    margin-left: 30px;
-    margin-right: 30px;
-}
-
-.blackKey:nth-of-type(2) {
-    margin-right: 90px;
-}
-
-.blackKey:nth-of-type(3) {
-    margin-right: 30px;
-}
-
-.blackKey:nth-of-type(4) {
-    margin-right: 30px;
-}
-
-.hover {
-    background-color: purple;
-}
-
-.active {
-    background-color: hotpink;
-}

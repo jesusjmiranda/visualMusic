@@ -200,27 +200,25 @@ let drawPiano = (params: DrawPianoParams): void => {
 
         if (params.notesToDraw){
 
-            let chord = params.notesToDraw.notes;
+            let notesPassed = params.notesToDraw.notes;
 
-            for(let note in chord) {
-              
+            for(let note in notesPassed) {
 
-                if (Music.noteNames[key.textContent] == note) {
+                if (Music.noteNames[key.textContent] == notesPassed[note]) {
                     key.classList.add('active');
                     Music.activeNotes.push(key.textContent);
                 }
             }
 
-            chord = null;
+
+
+            notesPassed = null;
         }
     }
 
     pianoLocation.appendChild(piano);
 
 };
-
-let a = new Chord([0, 1, 2, 3, 4]);
-drawPiano({ notesToDraw: a, querySelector: 'main'});
 
 let clearPiano = () => {
     let piano = document.querySelector('.piano');
@@ -232,3 +230,6 @@ let clearPiano = () => {
     Music.activeNotes = [];
 
 }
+
+let aFlat = new Chord([3, 7, 2, 10]);
+drawPiano({ notesToDraw: aFlat, querySelector: "main"});

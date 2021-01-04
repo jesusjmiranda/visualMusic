@@ -186,6 +186,23 @@ var drawPiano = function (params) {
         _loop_1(i);
     }
     pianoLocation.appendChild(piano);
+    var buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttons-container');
+    pianoLocation.appendChild(buttonsContainer);
+    var resetButton = document.createElement('div');
+    resetButton.classList.add('button');
+    resetButton.textContent = "Reset Piano";
+    resetButton.addEventListener("click", function () {
+        console.log("I'm working");
+    });
+    var chooseButton = document.createElement('div');
+    chooseButton.classList.add('button');
+    chooseButton.textContent = "Draw Scale";
+    chooseButton.addEventListener("click", function () {
+        console.log("I'm working");
+    });
+    buttonsContainer.appendChild(resetButton);
+    buttonsContainer.appendChild(chooseButton);
 };
 var clearPiano = function () {
     var piano = document.querySelector('.piano');
@@ -195,5 +212,9 @@ var clearPiano = function () {
     piano.remove();
     Music.activeNotes = [];
 };
-var aFlat = new Chord([3, 7, 2, 10]);
-drawPiano({ notesToDraw: aFlat, querySelector: "main" });
+var resetPiano = function () {
+    clearPiano();
+    drawPiano({ querySelector: "main" });
+};
+var eFlat = new Chord([3, 7, 2, 10]);
+drawPiano({ notesToDraw: eFlat, querySelector: "main" });

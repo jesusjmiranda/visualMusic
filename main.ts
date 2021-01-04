@@ -218,6 +218,28 @@ let drawPiano = (params: DrawPianoParams): void => {
 
     pianoLocation.appendChild(piano);
 
+    let buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttons-container');
+
+    pianoLocation.appendChild(buttonsContainer);
+
+    let resetButton = document.createElement('div');
+    resetButton.classList.add('button');
+    resetButton.textContent = "Reset Piano";
+    resetButton.addEventListener("click", function () {
+        console.log("I'm working");
+    });
+
+    let chooseButton = document.createElement('div');
+    chooseButton.classList.add('button');
+    chooseButton.textContent = "Draw Scale";
+    chooseButton.addEventListener("click", function () {
+        console.log("I'm working");
+    });
+
+    buttonsContainer.appendChild(resetButton);
+    buttonsContainer.appendChild(chooseButton);
+
 };
 
 let clearPiano = () => {
@@ -231,5 +253,13 @@ let clearPiano = () => {
 
 }
 
-let aFlat = new Chord([3, 7, 2, 10]);
-drawPiano({ notesToDraw: aFlat, querySelector: "main"});
+let resetPiano = () => {
+    clearPiano();
+
+    drawPiano({querySelector: "main"});
+}
+
+let eFlat = new Chord([3, 7, 2, 10]);
+drawPiano({ notesToDraw: eFlat, querySelector: "main"});
+
+

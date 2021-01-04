@@ -198,9 +198,7 @@ var drawPiano = function (params) {
     resetButton.addEventListener("mouseleave", function () {
         resetButton.classList.remove("hover");
     });
-    resetButton.addEventListener("click", function () {
-        console.log("I'm working");
-    });
+    resetButton.addEventListener("click", resetPiano);
     var chooseButton = document.createElement('div');
     chooseButton.classList.add('button');
     chooseButton.textContent = "Draw Scale";
@@ -210,23 +208,38 @@ var drawPiano = function (params) {
     chooseButton.addEventListener("mouseleave", function () {
         chooseButton.classList.remove("hover");
     });
-    chooseButton.addEventListener("click", function () {
-        console.log("I'm working");
-    });
+    chooseButton.addEventListener("click", chooseMode);
     buttonsContainer.appendChild(resetButton);
     buttonsContainer.appendChild(chooseButton);
 };
 var clearPiano = function () {
     var piano = document.querySelector('.piano');
+    var bC = document.querySelector('.buttons-container');
     while (piano.firstChild) {
         piano.removeChild(piano.firstChild);
     }
+    while (bC.firstChild) {
+        bC.removeChild(bC.firstChild);
+    }
     piano.remove();
+    bC.remove();
     Music.activeNotes = [];
 };
 var resetPiano = function () {
     clearPiano();
     drawPiano({ querySelector: "main" });
+};
+var chooseMode = function () {
+    var buttonsMenu = document.querySelector('.buttons-container');
+    var modeMenu = document.createElement('div');
+    modeMenu.classList.add('mode-menu');
+    buttonsMenu.appendChild(modeMenu);
+    for (var mode in Music.modeIntervals) {
+        var button = document.createElement('div');
+        button.classList.add('button');
+        button.textContent = "" + mode;
+        modeMenu.appendChild(button);
+    }
 };
 var eFlat = new Chord([3, 7, 2, 10]);
 drawPiano({ notesToDraw: eFlat, querySelector: "main" });

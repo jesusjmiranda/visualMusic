@@ -177,4 +177,10 @@
         line-height: 30px;
         color: white;
     }
+
+    .mode-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 }

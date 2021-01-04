@@ -103,6 +103,7 @@ interface DrawPianoParams {
     intervals?: number;
 }
 
+
 let drawPiano = (params: DrawPianoParams): void => {
 
     let pianoLocation = document.querySelector(`.${params.querySelector}`);
@@ -232,9 +233,7 @@ let drawPiano = (params: DrawPianoParams): void => {
     resetButton.addEventListener("mouseleave", function () {
         resetButton.classList.remove("hover");
     });
-    resetButton.addEventListener("click", function () {
-        console.log("I'm working");
-    });
+    resetButton.addEventListener("click", resetPiano);
 
     let chooseButton = document.createElement('div');
     chooseButton.classList.add('button');
@@ -245,9 +244,8 @@ let drawPiano = (params: DrawPianoParams): void => {
     chooseButton.addEventListener("mouseleave", function () {
         chooseButton.classList.remove("hover");
     });
-    chooseButton.addEventListener("click", function () {
-        console.log("I'm working");
-    });
+
+    chooseButton.addEventListener("click", chooseMode);
 
     buttonsContainer.appendChild(resetButton);
     buttonsContainer.appendChild(chooseButton);
@@ -256,11 +254,16 @@ let drawPiano = (params: DrawPianoParams): void => {
 
 let clearPiano = () => {
     let piano = document.querySelector('.piano');
+    let bC = document.querySelector('.buttons-container');
     while (piano.firstChild) {
         piano.removeChild(piano.firstChild);
     }
+    while (bC.firstChild) {
+        bC.removeChild(bC.firstChild);
+    }
 
     piano.remove();
+    bC.remove();
     Music.activeNotes = [];
 
 }
@@ -271,7 +274,32 @@ let resetPiano = () => {
     drawPiano({querySelector: "main"});
 }
 
+let chooseMode = () => {
+    //add logic to check if modeMenu exists. If so, don't redraw
+    //I can create infinite menus right now, not so good. 
+    let buttonsMenu = document.querySelector('.buttons-container');
+    let modeMenu = document.createElement('div');
+    modeMenu.classList.add('mode-menu');
+    buttonsMenu.appendChild(modeMenu);
+    for (let mode in Music.modeIntervals) {
+        let button = document.createElement('div');
+        button.classList.add('button');
+        button.textContent = `${mode}`;
+        button.addEventListener("click", drawScale);
+        modeMenu.appendChild(button);
+    }
+}
+
+let drawScale = () => {
+    
+    if (Music.activeNotes.length == 1) {
+       //redraw the piano with scale chosen based off the current active note 
+
+    } else {
+       //display a pop-up div that doesn't move the position of my other divs  
+       //prompting user to please select a note to base scale off of
+    }
+}
+
 let eFlat = new Chord([3, 7, 2, 10]);
 drawPiano({ notesToDraw: eFlat, querySelector: "main"});
-
-

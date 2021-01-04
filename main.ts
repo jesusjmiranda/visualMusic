@@ -226,6 +226,12 @@ let drawPiano = (params: DrawPianoParams): void => {
     let resetButton = document.createElement('div');
     resetButton.classList.add('button');
     resetButton.textContent = "Reset Piano";
+    resetButton.addEventListener("mouseenter", function () {
+        resetButton.classList.add("hover");
+    });
+    resetButton.addEventListener("mouseleave", function () {
+        resetButton.classList.remove("hover");
+    });
     resetButton.addEventListener("click", function () {
         console.log("I'm working");
     });
@@ -233,6 +239,12 @@ let drawPiano = (params: DrawPianoParams): void => {
     let chooseButton = document.createElement('div');
     chooseButton.classList.add('button');
     chooseButton.textContent = "Draw Scale";
+    chooseButton.addEventListener("mouseenter", function () {
+        chooseButton.classList.add("hover");
+    });
+    chooseButton.addEventListener("mouseleave", function () {
+        chooseButton.classList.remove("hover");
+    });
     chooseButton.addEventListener("click", function () {
         console.log("I'm working");
     });

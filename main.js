@@ -79,6 +79,14 @@ var Music = /** @class */ (function () {
     };
     return Music;
 }());
+;
+var DOMState = /** @class */ (function () {
+    function DOMState() {
+    }
+    DOMState.modeMenu = false;
+    return DOMState;
+}());
+;
 var Chord = /** @class */ (function () {
     function Chord(arrayOfNoteNums) {
         var _this = this;
@@ -90,6 +98,7 @@ var Chord = /** @class */ (function () {
     }
     return Chord;
 }());
+;
 ;
 var drawPiano = function (params) {
     var pianoLocation = document.querySelector("." + params.querySelector);
@@ -230,16 +239,55 @@ var resetPiano = function () {
     drawPiano({ querySelector: "main" });
 };
 var chooseMode = function () {
-    var buttonsMenu = document.querySelector('.buttons-container');
-    var modeMenu = document.createElement('div');
-    modeMenu.classList.add('mode-menu');
-    buttonsMenu.appendChild(modeMenu);
-    for (var mode in Music.modeIntervals) {
-        var button = document.createElement('div');
-        button.classList.add('button');
-        button.textContent = "" + mode;
-        modeMenu.appendChild(button);
+    if (DOMState.modeMenu == false) {
+        var buttonsMenu = document.querySelector('.buttons-container');
+        var modeMenu = document.createElement('div');
+        modeMenu.classList.add('mode-menu');
+        buttonsMenu.appendChild(modeMenu);
+        for (var mode in Music.modeIntervals) {
+            var button = document.createElement('div');
+            button.classList.add('button');
+            button.textContent = "" + mode;
+            button.addEventListener("click", drawScale);
+            button.addEventListener("click", clearMenu);
+            modeMenu.appendChild(button);
+        }
+        DOMState.modeMenu = true;
+    }
+};
+var clearMenu = function () {
+    var menu = document.querySelector('.mode-menu');
+    if (menu) {
+        menu.remove();
+        DOMState.modeMenu = false;
+    }
+};
+var drawScale = function () {
+    if (Music.activeNotes.length == 1) {
+        /*
+              let note = Music.activeNotes[0];
+              let notesArray = Music.createScale(note)
+              let currentChord = new Chord(notesArray);
+              let piano = document.querySelector('.piano');
+              resetPiano();
+              piano.remove();
+              drawPiano({notesToDraw: currentChord, querySelector: "main"});
+       
+              this is a start but when the piano is duplicated when drawn
+       
+       */
+    }
+    else {
+        saySomething();
     }
 };
 var eFlat = new Chord([3, 7, 2, 10]);
 drawPiano({ notesToDraw: eFlat, querySelector: "main" });
+var saySomething = function () {
+    var message = document.createElement('div');
+    var main = document.querySelector('.main');
+    message.classList.add('message');
+    message.textContent = "Please select one and only one note to draw a scale";
+    main.appendChild(message);
+    setTimeout(function () { message.remove(); }, 2000);
+};

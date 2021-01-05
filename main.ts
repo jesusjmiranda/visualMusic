@@ -81,7 +81,13 @@ class Music {
         }
     }
 
-} 
+};
+
+class DOMState {
+
+    static modeMenu = false;
+
+};
 
 class Chord {
     notes: number[];
@@ -101,7 +107,7 @@ interface DrawPianoParams {
     notesToDraw?: Chord;
     querySelector?: string;
     intervals?: number;
-}
+};
 
 
 let drawPiano = (params: DrawPianoParams): void => {
@@ -275,31 +281,59 @@ let resetPiano = () => {
 }
 
 let chooseMode = () => {
-    //add logic to check if modeMenu exists. If so, don't redraw
-    //I can create infinite menus right now, not so good. 
-    let buttonsMenu = document.querySelector('.buttons-container');
-    let modeMenu = document.createElement('div');
-    modeMenu.classList.add('mode-menu');
-    buttonsMenu.appendChild(modeMenu);
-    for (let mode in Music.modeIntervals) {
-        let button = document.createElement('div');
-        button.classList.add('button');
-        button.textContent = `${mode}`;
-        button.addEventListener("click", drawScale);
-        modeMenu.appendChild(button);
+    if (DOMState.modeMenu == false) {
+        let buttonsMenu = document.querySelector('.buttons-container');
+        let modeMenu = document.createElement('div');
+        modeMenu.classList.add('mode-menu');
+        buttonsMenu.appendChild(modeMenu);
+        for (let mode in Music.modeIntervals) {
+            let button = document.createElement('div');
+            button.classList.add('button');
+            button.textContent = `${mode}`;
+            button.addEventListener("click", drawScale);
+            button.addEventListener("click", clearMenu);
+            modeMenu.appendChild(button);
+        }
+
+        DOMState.modeMenu = true;
     }
 }
 
-let drawScale = () => {
-    
-    if (Music.activeNotes.length == 1) {
-       //redraw the piano with scale chosen based off the current active note 
+let clearMenu = () => {
+   let menu = document.querySelector('.mode-menu'); 
+   if (menu){
+       menu.remove();
+       DOMState.modeMenu = false;
+   }
+}
 
-    } else {
-       //display a pop-up div that doesn't move the position of my other divs  
-       //prompting user to please select a note to base scale off of
-    }
+let drawScale = () => {
+   if (Music.activeNotes.length == 1) {
+ /*
+       let note = Music.activeNotes[0];
+       let notesArray = Music.createScale(note)
+       let currentChord = new Chord(notesArray);
+       let piano = document.querySelector('.piano');
+       resetPiano();
+       piano.remove();
+       drawPiano({notesToDraw: currentChord, querySelector: "main"});
+
+       this is a start but when the piano is duplicated when drawn
+
+*/
+   } else {
+       saySomething();
+   }
 }
 
 let eFlat = new Chord([3, 7, 2, 10]);
 drawPiano({ notesToDraw: eFlat, querySelector: "main"});
+
+let saySomething = () => {
+    let message = document.createElement('div');
+    let main = document.querySelector('.main');
+    message.classList.add('message')
+    message.textContent = "Please select one and only one note to draw a scale";
+    main.appendChild(message);
+    setTimeout(function() {message.remove()}, 2000);
+}

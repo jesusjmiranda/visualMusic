@@ -233,10 +233,12 @@ var clearPiano = function () {
     piano.remove();
     bC.remove();
     Music.activeNotes = [];
+    DOMState.modeMenu = false;
 };
 var resetPiano = function () {
     clearPiano();
     drawPiano({ querySelector: "main" });
+    console.log("Piano redrawn");
 };
 var chooseMode = function () {
     if (DOMState.modeMenu == false) {
@@ -264,25 +266,20 @@ var clearMenu = function () {
 };
 var drawScale = function () {
     if (Music.activeNotes.length == 1) {
-        /*
-              let note = Music.activeNotes[0];
-              let notesArray = Music.createScale(note)
-              let currentChord = new Chord(notesArray);
-              let piano = document.querySelector('.piano');
-              resetPiano();
-              piano.remove();
-              drawPiano({notesToDraw: currentChord, querySelector: "main"});
-       
-              this is a start but when the piano is duplicated when drawn
-       
-       */
+        var myNote = Music.activeNotes[0];
+        clearPiano();
+        var myScale = Music.createScale(myNote);
+        var myChord = new Chord(myScale);
+        drawPiano({ notesToDraw: myChord, querySelector: "main" });
+        myNote = null;
+        myScale = null;
+        myChord = null;
     }
     else {
         saySomething();
     }
 };
-var eFlat = new Chord([3, 7, 2, 10]);
-drawPiano({ notesToDraw: eFlat, querySelector: "main" });
+drawPiano({ querySelector: "main" });
 var saySomething = function () {
     var message = document.createElement('div');
     var main = document.querySelector('.main');

@@ -271,13 +271,14 @@ let clearPiano = () => {
     piano.remove();
     bC.remove();
     Music.activeNotes = [];
-
+    DOMState.modeMenu = false;
 }
 
 let resetPiano = () => {
     clearPiano();
 
     drawPiano({querySelector: "main"});
+    console.log("Piano redrawn");
 }
 
 let chooseMode = () => {
@@ -309,25 +310,21 @@ let clearMenu = () => {
 
 let drawScale = () => {
    if (Music.activeNotes.length == 1) {
- /*
-       let note = Music.activeNotes[0];
-       let notesArray = Music.createScale(note)
-       let currentChord = new Chord(notesArray);
-       let piano = document.querySelector('.piano');
-       resetPiano();
-       piano.remove();
-       drawPiano({notesToDraw: currentChord, querySelector: "main"});
+       let myNote = Music.activeNotes[0];
+       clearPiano();
+       let myScale = Music.createScale(myNote);
+       let myChord = new Chord(myScale);
+       drawPiano({notesToDraw: myChord, querySelector: "main"});
+       myNote = null;
+       myScale = null;
+       myChord = null;
 
-       this is a start but when the piano is duplicated when drawn
-
-*/
    } else {
        saySomething();
    }
 }
 
-let eFlat = new Chord([3, 7, 2, 10]);
-drawPiano({ notesToDraw: eFlat, querySelector: "main"});
+drawPiano({ querySelector: "main"});
 
 let saySomething = () => {
     let message = document.createElement('div');

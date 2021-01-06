@@ -289,9 +289,16 @@ let chooseMode = () => {
         for (let mode in Music.modeIntervals) {
             let button = document.createElement('div');
             button.classList.add('button');
+            button.addEventListener("mouseenter", function() {
+                button.classList.add("hover");
+            });
+            button.addEventListener("mouseleave", function() {
+                button.classList.remove("hover");
+            });
             button.textContent = `${mode}`;
             button.addEventListener("click", function() {
-                drawScale();
+                let mode = button.textContent
+                drawScale(mode);
             });
             button.addEventListener("click", clearMenu);
             modeMenu.appendChild(button);
@@ -309,10 +316,10 @@ let clearMenu = () => {
    }
 }
 
-let drawScale = () => {
+let drawScale = (mode: string) => {
    if (Music.activeNotes.length == 1) {
        let myNote = Music.activeNotes[0];
-       let myScale = Music.createScale(myNote);
+       let myScale = Music.createScale(myNote, mode);
        let myChord = new Chord(myScale);
        clearPiano();
        drawPiano({notesToDraw: myChord, querySelector: "main"});
@@ -331,7 +338,7 @@ let oneNoteAlert = () => {
     let message = document.createElement('div');
     let main = document.querySelector('.main');
     message.classList.add('message')
-    message.textContent = "Please select one and only one note to draw a scale";
+    message.textContent = "Please select only one note before selecting a mode";
     main.appendChild(message);
-    setTimeout(function() {message.remove()}, 2000);
+    setTimeout(function() {message.remove()}, 4000);
 }

@@ -245,15 +245,25 @@ var chooseMode = function () {
         var modeMenu = document.createElement('div');
         modeMenu.classList.add('mode-menu');
         buttonsMenu.appendChild(modeMenu);
-        for (var mode in Music.modeIntervals) {
+        var _loop_2 = function (mode) {
             var button = document.createElement('div');
             button.classList.add('button');
+            button.addEventListener("mouseenter", function () {
+                button.classList.add("hover");
+            });
+            button.addEventListener("mouseleave", function () {
+                button.classList.remove("hover");
+            });
             button.textContent = "" + mode;
             button.addEventListener("click", function () {
-                drawScale();
+                var mode = button.textContent;
+                drawScale(mode);
             });
             button.addEventListener("click", clearMenu);
             modeMenu.appendChild(button);
+        };
+        for (var mode in Music.modeIntervals) {
+            _loop_2(mode);
         }
         DOMState.modeMenu = true;
     }
@@ -265,10 +275,10 @@ var clearMenu = function () {
         DOMState.modeMenu = false;
     }
 };
-var drawScale = function () {
+var drawScale = function (mode) {
     if (Music.activeNotes.length == 1) {
         var myNote = Music.activeNotes[0];
-        var myScale = Music.createScale(myNote);
+        var myScale = Music.createScale(myNote, mode);
         var myChord = new Chord(myScale);
         clearPiano();
         drawPiano({ notesToDraw: myChord, querySelector: "main" });
@@ -285,7 +295,7 @@ var oneNoteAlert = function () {
     var message = document.createElement('div');
     var main = document.querySelector('.main');
     message.classList.add('message');
-    message.textContent = "Please select one and only one note to draw a scale";
+    message.textContent = "Please select only one note before selecting a mode";
     main.appendChild(message);
-    setTimeout(function () { message.remove(); }, 2000);
+    setTimeout(function () { message.remove(); }, 4000);
 };

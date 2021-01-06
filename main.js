@@ -238,7 +238,6 @@ var clearPiano = function () {
 var resetPiano = function () {
     clearPiano();
     drawPiano({ querySelector: "main" });
-    console.log("Piano redrawn");
 };
 var chooseMode = function () {
     if (DOMState.modeMenu == false) {
@@ -250,7 +249,9 @@ var chooseMode = function () {
             var button = document.createElement('div');
             button.classList.add('button');
             button.textContent = "" + mode;
-            button.addEventListener("click", drawScale);
+            button.addEventListener("click", function () {
+                drawScale();
+            });
             button.addEventListener("click", clearMenu);
             modeMenu.appendChild(button);
         }
@@ -267,20 +268,20 @@ var clearMenu = function () {
 var drawScale = function () {
     if (Music.activeNotes.length == 1) {
         var myNote = Music.activeNotes[0];
-        clearPiano();
         var myScale = Music.createScale(myNote);
         var myChord = new Chord(myScale);
+        clearPiano();
         drawPiano({ notesToDraw: myChord, querySelector: "main" });
         myNote = null;
         myScale = null;
         myChord = null;
     }
     else {
-        saySomething();
+        oneNoteAlert();
     }
 };
 drawPiano({ querySelector: "main" });
-var saySomething = function () {
+var oneNoteAlert = function () {
     var message = document.createElement('div');
     var main = document.querySelector('.main');
     message.classList.add('message');

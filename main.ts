@@ -278,7 +278,6 @@ let resetPiano = () => {
     clearPiano();
 
     drawPiano({querySelector: "main"});
-    console.log("Piano redrawn");
 }
 
 let chooseMode = () => {
@@ -291,7 +290,9 @@ let chooseMode = () => {
             let button = document.createElement('div');
             button.classList.add('button');
             button.textContent = `${mode}`;
-            button.addEventListener("click", drawScale);
+            button.addEventListener("click", function() {
+                drawScale();
+            });
             button.addEventListener("click", clearMenu);
             modeMenu.appendChild(button);
         }
@@ -311,22 +312,22 @@ let clearMenu = () => {
 let drawScale = () => {
    if (Music.activeNotes.length == 1) {
        let myNote = Music.activeNotes[0];
-       clearPiano();
        let myScale = Music.createScale(myNote);
        let myChord = new Chord(myScale);
+       clearPiano();
        drawPiano({notesToDraw: myChord, querySelector: "main"});
        myNote = null;
        myScale = null;
        myChord = null;
 
    } else {
-       saySomething();
+       oneNoteAlert();
    }
 }
 
 drawPiano({ querySelector: "main"});
 
-let saySomething = () => {
+let oneNoteAlert = () => {
     let message = document.createElement('div');
     let main = document.querySelector('.main');
     message.classList.add('message')

@@ -19,6 +19,7 @@
         display: flex;
         flex-direction: column;
         height: 100vh;
+        align-items: center;
     }
 
     .navigation {
@@ -37,6 +38,32 @@
         display: none;
     }
     .message {
+        display: none;
+    }
+    
+    .navigation {
+        display: flex;
+        color: white;
+        font-family: sans-serif;
+        margin: 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title {
+        display: flex;
+        font-size: 40px;
+        margin: 10px;
+        width: 175px;
+    }
+
+    .main {
+        border: 1px solid white;
+        margin: 0px 20px 20px 20px;
+        width: 90%;
+    }
+
+    .nav-link {
         display: none;
     }
 }
@@ -64,11 +91,26 @@
 
     .navigation {
         display: flex;
-        border: 1px solid white;
+        flex-direction: column;
+        color: white;
+        font-family: sans-serif;
+        border-right: 1px solid white;
         width: 16%;
         min-width: 200px;
         height: 95%;
         margin: 20px;
+        margin-left: 40px;
+    }
+
+    .nav-link {
+        margin: 10px;
+
+    }
+
+    .title {
+        display: flex;
+        font-size: 40px;
+        margin: 10px;
     }
 
     .main {
@@ -188,9 +230,10 @@
     }
 
     .message {
+        display: flex;
         position: absolute;
-        width: 400px;
-        height: 200px;
+        width: 200px;
+        height: 100px;
         background-color: purple;
         align-self: flex-start;
         color: white;

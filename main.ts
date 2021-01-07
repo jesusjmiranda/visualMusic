@@ -93,7 +93,7 @@ class Chord {
     notes: number[];
 
     constructor(arrayOfNoteNums: number[]){
-        //filter duplicates
+        //filters duplicates
         this.notes = arrayOfNoteNums.filter((v,i) => arrayOfNoteNums.indexOf(v) === i); 
     }
 
@@ -342,3 +342,21 @@ let oneNoteAlert = () => {
     main.appendChild(message);
     setTimeout(function() {message.remove()}, 4000);
 }
+
+let navigation = () => {
+    let navigation = document.querySelector(".navigation");
+
+    let title = document.createElement("div");
+    title.classList.add("title");
+    title.textContent = "Visualize Music";
+
+    let pianoTool = document.createElement("div");
+    pianoTool.classList.add("nav-link");
+    pianoTool.textContent = "Piano visualizer";
+
+    navigation.appendChild(title);
+    navigation.appendChild(pianoTool);
+}
+
+
+navigation();

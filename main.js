@@ -93,7 +93,7 @@ var Chord = /** @class */ (function () {
         this.getNotes = function () {
             console.log(_this.notes);
         };
-        //filter duplicates
+        //filters duplicates
         this.notes = arrayOfNoteNums.filter(function (v, i) { return arrayOfNoteNums.indexOf(v) === i; });
     }
     return Chord;
@@ -299,3 +299,15 @@ var oneNoteAlert = function () {
     main.appendChild(message);
     setTimeout(function () { message.remove(); }, 4000);
 };
+var navigation = function () {
+    var navigation = document.querySelector(".navigation");
+    var title = document.createElement("div");
+    title.classList.add("title");
+    title.textContent = "Visualize Music";
+    var pianoTool = document.createElement("div");
+    pianoTool.classList.add("nav-link");
+    pianoTool.textContent = "Piano visualizer";
+    navigation.appendChild(title);
+    navigation.appendChild(pianoTool);
+};
+navigation();

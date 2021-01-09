@@ -332,8 +332,6 @@ let drawScale = (mode: string) => {
    }
 }
 
-drawPiano({ querySelector: "main"});
-
 let oneNoteAlert = () => {
     let message = document.createElement('div');
     let main = document.querySelector('.main');
@@ -360,3 +358,16 @@ let navigation = () => {
 
 
 navigation();
+
+let localChords = localStorage.length;
+
+    if (localChords == 0){
+        console.log("There are no chords stored locally");
+        localStorage.setItem("myChords", "1, 2, 8, 3, 6");
+        console.log(localStorage.myChords);
+    } else {
+        console.log(`There are ${localChords} items in local storage`);
+        localStorage.setItem("myChords", "9, 3, 6, 2, 7");
+        console.log(localStorage.myChords);
+    }
+

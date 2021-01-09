@@ -1,4 +1,5 @@
 .originalJSVersion
 .tsconfig.json
+.original.js
 original.js
 notes.md

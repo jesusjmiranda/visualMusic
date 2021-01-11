@@ -309,6 +309,7 @@ var navigation = function () {
     navigation.appendChild(title);
     navigation.appendChild(pianoTool);
 };
+drawPiano({ querySelector: "main" });
 navigation();
 var localChords = localStorage.length;
 if (localChords == 0) {

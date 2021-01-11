@@ -356,6 +356,7 @@ let navigation = () => {
     navigation.appendChild(pianoTool);
 }
 
+drawPiano({querySelector: "main"});
 
 navigation();
 

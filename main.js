@@ -290,6 +290,7 @@ var drawScale = function (mode) {
         oneNoteAlert();
     }
 };
+drawPiano({ querySelector: "main" });
 var oneNoteAlert = function () {
     var message = document.createElement('div');
     var main = document.querySelector('.main');
@@ -309,16 +310,4 @@ var navigation = function () {
     navigation.appendChild(title);
     navigation.appendChild(pianoTool);
 };
-drawPiano({ querySelector: "main" });
 navigation();
-var localChords = localStorage.length;
-if (localChords == 0) {
-    console.log("There are no chords stored locally");
-    localStorage.setItem("myChords", "1, 2, 8, 3, 6");
-    console.log(localStorage.myChords);
-}
-else {
-    console.log("There are " + localChords + " items in local storage");
-    localStorage.setItem("myChords", "9, 3, 6, 2, 7");
-    console.log(localStorage.myChords);
-}
